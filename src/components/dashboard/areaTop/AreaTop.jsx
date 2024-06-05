@@ -2,8 +2,8 @@ import { MdOutlineMenu } from "react-icons/md";
 import "./AreaTop.scss";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SidebarContext } from "../../../context/SidebarContext";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css"; // arquivo de estilo principal
+import "react-date-range/dist/theme/default.css"; // arquivo de tema css
 import { addDays } from "date-fns";
 import { DateRange } from "react-date-range";
 

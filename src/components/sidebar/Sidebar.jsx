@@ -1,8 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { LIGHT_THEME } from "../../constants/themeConstants";
-import LogoBlue from "../../assets/images/logo_blue.svg";
-import LogoWhite from "../../assets/images/logo_white.svg";
+import { SidebarContext } from "../../context/SidebarContext";
 import {
   MdOutlineAttachMoney,
   MdOutlineBarChart,
@@ -16,20 +14,20 @@ import {
   MdOutlineShoppingBag,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
+import logo from '../../assets/images/logo_blue.svg'; // Caminho corrigido da imagem
 import "./Sidebar.scss";
-import { SidebarContext } from "../../context/SidebarContext";
 
 const Sidebar = () => {
   const { theme } = useContext(ThemeContext);
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
 
-  // closing the navbar when clicked outside the sidebar area
+  // Função para fechar a barra lateral quando clicar fora dela
   const handleClickOutside = (event) => {
     if (
       navbarRef.current &&
       !navbarRef.current.contains(event.target) &&
-      event.target.className !== "sidebar-oepn-btn"
+      event.target.className !== "sidebar-open-btn"
     ) {
       closeSidebar();
     }
@@ -43,14 +41,10 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <nav
-      className={`sidebar ${isSidebarOpen ? "sidebar-show" : ""}`}
-      ref={navbarRef}
-    >
+    <nav className={`sidebar ${isSidebarOpen ? "sidebar-show" : ""}`} ref={navbarRef}>
       <div className="sidebar-top">
         <div className="sidebar-brand">
-          <img src={theme === LIGHT_THEME ? LogoBlue : LogoWhite} alt="" />
-          <span className="sidebar-brand-text">tabernam.</span>
+          <img src={logo} alt="Logo" /> {/* Utilizado o caminho correto para a imagem */}
         </div>
         <button className="sidebar-close-btn" onClick={closeSidebar}>
           <MdOutlineClose size={24} />
@@ -72,7 +66,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineBarChart size={20} />
                 </span>
-                <span className="menu-link-text">Statistics</span>
+                <span className="menu-link-text">Estatísticas</span>
               </Link>
             </li>
             <li className="menu-item">
@@ -80,7 +74,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineAttachMoney size={20} />
                 </span>
-                <span className="menu-link-text">Payment</span>
+                <span className="menu-link-text">Pagamento</span>
               </Link>
             </li>
             <li className="menu-item">
@@ -88,7 +82,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineCurrencyExchange size={18} />
                 </span>
-                <span className="menu-link-text">Transactions</span>
+                <span className="menu-link-text">Transações</span>
               </Link>
             </li>
             <li className="menu-item">
@@ -96,7 +90,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
                 </span>
-                <span className="menu-link-text">Products</span>
+                <span className="menu-link-text">Produtos</span>
               </Link>
             </li>
             <li className="menu-item">
@@ -104,7 +98,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlinePeople size={20} />
                 </span>
-                <span className="menu-link-text">Customer</span>
+                <span className="menu-link-text">Clientes</span>
               </Link>
             </li>
             <li className="menu-item">
@@ -112,12 +106,11 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineMessage size={18} />
                 </span>
-                <span className="menu-link-text">Messages</span>
+                <span className="menu-link-text">Mensagens</span>
               </Link>
             </li>
           </ul>
         </div>
-
         <div className="sidebar-menu sidebar-menu2">
           <ul className="menu-list">
             <li className="menu-item">
@@ -125,7 +118,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineSettings size={20} />
                 </span>
-                <span className="menu-link-text">Settings</span>
+                <span className="menu-link-text">Configurações</span>
               </Link>
             </li>
             <li className="menu-item">
@@ -133,7 +126,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineLogout size={20} />
                 </span>
-                <span className="menu-link-text">Logout</span>
+                <span className="menu-link-text">Sair</span>
               </Link>
             </li>
           </ul>
